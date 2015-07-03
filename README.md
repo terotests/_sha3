@@ -79,8 +79,6 @@ The class has following internal singleton variables:
         
 * s
         
-* NODE_JS
-        
         
 ### <a name="_sha3__initSha"></a>_sha3::_initSha(t)
 

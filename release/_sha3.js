@@ -17,7 +17,6 @@
       var RC;
       var blocks;
       var s;
-      var NODE_JS;
 
       // Initialize static variables here...
 
