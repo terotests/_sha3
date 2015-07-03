@@ -100,7 +100,7 @@ RC = [1, 0, 32898, 0, 32906, 2147483648, 2147516416, 2147483648, 32907, 0, 21474
 blocks = [], s = [];
 ```
 
-### _sha3::constructor( host )
+### _sha3::constructor( options )
 
 ```javascript
 this._initSha();
