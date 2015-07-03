@@ -1,6 +1,6 @@
 # _sha3 
 
-Small sha3 library, original implementation
+Small SHA-3 library, original implementation
 
 https://github.com/emn178/js-sha3/blob/master/src/sha3.js
 
