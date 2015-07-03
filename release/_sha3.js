@@ -10,7 +10,6 @@
     // Then create the traits and subclasses for this class here...
 
     (function (_myTrait_) {
-      var CHROME;
       var HEX_CHARS;
       var KECCAK_PADDING;
       var PADDING;
@@ -29,9 +28,6 @@
 
         if (RC) return;
 
-        NODE_JS = this.isNode();
-
-        CHROME = !NODE_JS && navigator.userAgent.indexOf('Chrome') != -1;
         HEX_CHARS = '0123456789abcdef'.split('');
         KECCAK_PADDING = [1, 256, 65536, 16777216];
         PADDING = [6, 1536, 393216, 100663296];
@@ -46,15 +42,6 @@
       _myTrait_.__traitInit.push(function (host) {
         this._initSha();
       });
-
-      /**
-       * @param float t
-       */
-      _myTrait_.isNode = function (t) {
-        var isNode = new Function('try {return this===global;}catch(e){return false;}');
-
-        return isNode();
-      };
 
       /**
        * @param string message
@@ -376,39 +363,10 @@
         } while (!end);
 
         var hex = '';
-        if (CHROME) {
-          b0 = s[0];
-          b1 = s[1];
-          b2 = s[2];
-          b3 = s[3];
-          b4 = s[4];
-          b5 = s[5];
-          b6 = s[6];
-          b7 = s[7];
-          b8 = s[8];
-          b9 = s[9];
-          b10 = s[10];
-          b11 = s[11];
-          b12 = s[12];
-          b13 = s[13];
-          b14 = s[14];
-          b15 = s[15];
-          hex += HEX_CHARS[b0 >> 4 & 15] + HEX_CHARS[b0 & 15] + HEX_CHARS[b0 >> 12 & 15] + HEX_CHARS[b0 >> 8 & 15] + HEX_CHARS[b0 >> 20 & 15] + HEX_CHARS[b0 >> 16 & 15] + HEX_CHARS[b0 >> 28 & 15] + HEX_CHARS[b0 >> 24 & 15] + HEX_CHARS[b1 >> 4 & 15] + HEX_CHARS[b1 & 15] + HEX_CHARS[b1 >> 12 & 15] + HEX_CHARS[b1 >> 8 & 15] + HEX_CHARS[b1 >> 20 & 15] + HEX_CHARS[b1 >> 16 & 15] + HEX_CHARS[b1 >> 28 & 15] + HEX_CHARS[b1 >> 24 & 15] + HEX_CHARS[b2 >> 4 & 15] + HEX_CHARS[b2 & 15] + HEX_CHARS[b2 >> 12 & 15] + HEX_CHARS[b2 >> 8 & 15] + HEX_CHARS[b2 >> 20 & 15] + HEX_CHARS[b2 >> 16 & 15] + HEX_CHARS[b2 >> 28 & 15] + HEX_CHARS[b2 >> 24 & 15] + HEX_CHARS[b3 >> 4 & 15] + HEX_CHARS[b3 & 15] + HEX_CHARS[b3 >> 12 & 15] + HEX_CHARS[b3 >> 8 & 15] + HEX_CHARS[b3 >> 20 & 15] + HEX_CHARS[b3 >> 16 & 15] + HEX_CHARS[b3 >> 28 & 15] + HEX_CHARS[b3 >> 24 & 15] + HEX_CHARS[b4 >> 4 & 15] + HEX_CHARS[b4 & 15] + HEX_CHARS[b4 >> 12 & 15] + HEX_CHARS[b4 >> 8 & 15] + HEX_CHARS[b4 >> 20 & 15] + HEX_CHARS[b4 >> 16 & 15] + HEX_CHARS[b4 >> 28 & 15] + HEX_CHARS[b4 >> 24 & 15] + HEX_CHARS[b5 >> 4 & 15] + HEX_CHARS[b5 & 15] + HEX_CHARS[b5 >> 12 & 15] + HEX_CHARS[b5 >> 8 & 15] + HEX_CHARS[b5 >> 20 & 15] + HEX_CHARS[b5 >> 16 & 15] + HEX_CHARS[b5 >> 28 & 15] + HEX_CHARS[b5 >> 24 & 15] + HEX_CHARS[b6 >> 4 & 15] + HEX_CHARS[b6 & 15] + HEX_CHARS[b6 >> 12 & 15] + HEX_CHARS[b6 >> 8 & 15] + HEX_CHARS[b6 >> 20 & 15] + HEX_CHARS[b6 >> 16 & 15] + HEX_CHARS[b6 >> 28 & 15] + HEX_CHARS[b6 >> 24 & 15];
 
-          if (bits >= 256) {
-            hex += HEX_CHARS[b7 >> 4 & 15] + HEX_CHARS[b7 & 15] + HEX_CHARS[b7 >> 12 & 15] + HEX_CHARS[b7 >> 8 & 15] + HEX_CHARS[b7 >> 20 & 15] + HEX_CHARS[b7 >> 16 & 15] + HEX_CHARS[b7 >> 28 & 15] + HEX_CHARS[b7 >> 24 & 15];
-          }
-          if (bits >= 384) {
-            hex += HEX_CHARS[b8 >> 4 & 15] + HEX_CHARS[b8 & 15] + HEX_CHARS[b8 >> 12 & 15] + HEX_CHARS[b8 >> 8 & 15] + HEX_CHARS[b8 >> 20 & 15] + HEX_CHARS[b8 >> 16 & 15] + HEX_CHARS[b8 >> 28 & 15] + HEX_CHARS[b8 >> 24 & 15] + HEX_CHARS[b9 >> 4 & 15] + HEX_CHARS[b9 & 15] + HEX_CHARS[b9 >> 12 & 15] + HEX_CHARS[b9 >> 8 & 15] + HEX_CHARS[b9 >> 20 & 15] + HEX_CHARS[b9 >> 16 & 15] + HEX_CHARS[b9 >> 28 & 15] + HEX_CHARS[b9 >> 24 & 15] + HEX_CHARS[b10 >> 4 & 15] + HEX_CHARS[b10 & 15] + HEX_CHARS[b10 >> 12 & 15] + HEX_CHARS[b10 >> 8 & 15] + HEX_CHARS[b10 >> 20 & 15] + HEX_CHARS[b10 >> 16 & 15] + HEX_CHARS[b10 >> 28 & 15] + HEX_CHARS[b10 >> 24 & 15] + HEX_CHARS[b11 >> 4 & 15] + HEX_CHARS[b11 & 15] + HEX_CHARS[b11 >> 12 & 15] + HEX_CHARS[b11 >> 8 & 15] + HEX_CHARS[b11 >> 20 & 15] + HEX_CHARS[b11 >> 16 & 15] + HEX_CHARS[b11 >> 28 & 15] + HEX_CHARS[b11 >> 24 & 15];
-          }
-          if (bits == 512) {
-            hex += HEX_CHARS[b12 >> 4 & 15] + HEX_CHARS[b12 & 15] + HEX_CHARS[b12 >> 12 & 15] + HEX_CHARS[b12 >> 8 & 15] + HEX_CHARS[b12 >> 20 & 15] + HEX_CHARS[b12 >> 16 & 15] + HEX_CHARS[b12 >> 28 & 15] + HEX_CHARS[b12 >> 24 & 15] + HEX_CHARS[b13 >> 4 & 15] + HEX_CHARS[b13 & 15] + HEX_CHARS[b13 >> 12 & 15] + HEX_CHARS[b13 >> 8 & 15] + HEX_CHARS[b13 >> 20 & 15] + HEX_CHARS[b13 >> 16 & 15] + HEX_CHARS[b13 >> 28 & 15] + HEX_CHARS[b13 >> 24 & 15] + HEX_CHARS[b14 >> 4 & 15] + HEX_CHARS[b14 & 15] + HEX_CHARS[b14 >> 12 & 15] + HEX_CHARS[b14 >> 8 & 15] + HEX_CHARS[b14 >> 20 & 15] + HEX_CHARS[b14 >> 16 & 15] + HEX_CHARS[b14 >> 28 & 15] + HEX_CHARS[b14 >> 24 & 15] + HEX_CHARS[b15 >> 4 & 15] + HEX_CHARS[b15 & 15] + HEX_CHARS[b15 >> 12 & 15] + HEX_CHARS[b15 >> 8 & 15] + HEX_CHARS[b15 >> 20 & 15] + HEX_CHARS[b15 >> 16 & 15] + HEX_CHARS[b15 >> 28 & 15] + HEX_CHARS[b15 >> 24 & 15];
-          }
-        } else {
-          for (i = 0, n = bits / 32; i < n; ++i) {
-            h = s[i];
-            hex += HEX_CHARS[h >> 4 & 15] + HEX_CHARS[h & 15] + HEX_CHARS[h >> 12 & 15] + HEX_CHARS[h >> 8 & 15] + HEX_CHARS[h >> 20 & 15] + HEX_CHARS[h >> 16 & 15] + HEX_CHARS[h >> 28 & 15] + HEX_CHARS[h >> 24 & 15];
-          }
+        for (i = 0, n = bits / 32; i < n; ++i) {
+          h = s[i];
+          hex += HEX_CHARS[h >> 4 & 15] + HEX_CHARS[h & 15] + HEX_CHARS[h >> 12 & 15] + HEX_CHARS[h >> 8 & 15] + HEX_CHARS[h >> 20 & 15] + HEX_CHARS[h >> 16 & 15] + HEX_CHARS[h >> 28 & 15] + HEX_CHARS[h >> 24 & 15];
         }
         return hex;
       };
