@@ -24,7 +24,6 @@
        * @param float t
        */
       _myTrait_._initSha = function (t) {
-
         if (RC) return;
 
         HEX_CHARS = '0123456789abcdef'.split('');
@@ -38,14 +37,14 @@
 
       if (_myTrait_.__traitInit && !_myTrait_.hasOwnProperty('__traitInit')) _myTrait_.__traitInit = _myTrait_.__traitInit.slice();
       if (!_myTrait_.__traitInit) _myTrait_.__traitInit = [];
-      _myTrait_.__traitInit.push(function (options) {
+      _myTrait_.__traitInit.push(function (t) {
         this._initSha();
       });
 
       /**
-       * @param string message
-       * @param int bits
-       * @param int padding
+       * @param float message
+       * @param float bits
+       * @param float padding
        */
       _myTrait_.keccak = function (message, bits, padding) {
         var notString = typeof message != 'string';
@@ -378,7 +377,7 @@
       };
 
       /**
-       * @param String message
+       * @param string message
        */
       _myTrait_.keccak_256 = function (message) {
         return this.keccak(message, 256, KECCAK_PADDING);
